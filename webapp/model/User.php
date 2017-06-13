@@ -2,14 +2,14 @@
 
 /**
  * Created by PhpStorm.
- * User: smendes
- * Date: 17-05-2016
- * Time: 14:16
+ * User: Ruben
+ * Date: 13/06/2017
+ * Time: 19:26
  */
 
-use ActiveRecord\Model;
+use \ActiveRecord\Model;
 
-class Book extends Model
+class User extends Model
 {
     static $validates_presence_of = array(
         array('name'),
