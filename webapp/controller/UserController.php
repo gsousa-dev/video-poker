@@ -1,104 +1,67 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Ruben
- * Date: 13/06/2017
- * Time: 19:42
- */
-class UserController
+use ArmoredCore\Controllers\BaseController;
+use ArmoredCore\WebObjects\Redirect;
+use ArmoredCore\WebObjects\Session;
+use ArmoredCore\WebObjects\View;
+use ArmoredCore\Interfaces\ResourceControllerInterface;
+
+class UserController extends BaseController
 {
-    public function index()
+    /**
+     * @return \ArmoredCore\WebObjects\View;
+     */
+    public function index() 
     {
-        $users = User::all();
-        View::make('home.index', ['users' => $users]);
+    }
 
+    /**
+     * @return \ArmoredCore\WebObjects\View;
+     */
+    public function create() 
+    {
     }
 
     /**
      * @return mixed
      */
-    public function create()
+    public function store() 
     {
-        View::make('book.create');
     }
 
     /**
-     * @return mixed
+     * @param $id
+     * @return \ArmoredCore\WebObjects\View;
      */
-    public function store()
+    public function show($id) 
     {
-        // create new resource (activerecord/model) instance
-        // your form name fields must match the ones of the table fields
-        $book = new Book(Post::getAll());
+        $user = User::find($id);        
+    }
 
-        if($book->is_valid()){
-            $book->save();
-            Redirect::toRoute('book/index');
-        } else {
-            // return form with data and errors
-            Redirect::flashToRoute('book/create', ['book' => $book]);
-        }
+    /**
+     * @param $id
+     * @return \ArmoredCore\WebObjects\View;
+     */
+    public function edit($id) 
+    {
+        $user = User::find($id);        
     }
 
     /**
      * @param $id
      * @return mixed
      */
-    public function show($id)
+    public function update($id) 
     {
-        $book = Book::find($id);
-
-        \Tracy\Debugger::barDump($book);
-
-        if (is_null($book)) {
-            // redirect to standard error page
-        } else {
-            View::make('book.show', ['book' => $book]);
-        }
+        $user = User::find($id);        
     }
 
     /**
      * @param $id
      * @return mixed
      */
-    public function edit($id)
+    public function destroy($id) 
     {
-        $book = Book::find($id);
-
-        if (is_null($book)) {
-            // redirect to standard error page
-        } else {
-            View::make('book.edit', ['book' => $book]);
-        }
-    }
-
-    /**
-     * @param $id
-     * @return mixed
-     */
-    public function update($id)
-    {
-        $book = Book::find($id);
-        $book->update_attributes(Post::getAll());
-
-        if($book->is_valid()){
-            $book->save();
-            Redirect::toRoute('book/index');
-        } else {
-            // return form with data and errors
-            Redirect::flashToRoute('book/edit', ['book' => $book], $id);
-        }
-    }
-
-    /**
-     * @param $id
-     * @return mixed
-     */
-    public function destroy($id)
-    {
-        $book = Book::find($id);
-        $book->delete();
-        Redirect::toRoute('book/index');
+        $user = User::find($id);
     }
 }
