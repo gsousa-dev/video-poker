@@ -12,21 +12,31 @@ use ArmoredCore\WebObjects\View;
  * Time: 19:48
  */
 
-class AuthController
+class AuthController extends BaseController
 {
-    public function authenticate()
+    public function index(){
+        Redirect::toRoute('home/index');
+    }
+
+    public function login()
     {
+        $msg = $_SESSION['msg_auth'];
+        View::make('home.login', ['msg' => $msg]);
+    }
+
+
+    public function authenticate(){
         $dados = Post::getAll();
-        $verificar = User::all();
+        $utilizadores = User::all();
         $existe = false;
         $id = 0;
         $username = $dados['username'];
         $password = $dados['password'];
 
-        foreach ($verificar as $value) {
-            if ($value->username === $username) {
+        foreach ($utilizadores as $utilizador) {//vai verificar se existe na BD
+            if ($utilizador->username === $username /*&& $value->password == $password*/) {
                 $existe = true;
-                $id = $value->id;
+                $id = $utilizador->id;
             }
         }
 
@@ -35,23 +45,16 @@ class AuthController
             $isPasswordCorrect = password_verify($password, $user->password);
             if ($isPasswordCorrect == true) {//se as credenciais derem certas
                 Session::set("user_id", $user->id);
-                $_SESSION['msg_auth'] = '';
-                $_SESSION['auth'] = true;
-                Redirect::toRoute('home/index');
+                $msg = '';
+                View::make('home.login', ['msg' => $msg]);
 
             } else {
-                $_SESSION['msg_auth'] = '<b><i class="fa fa-warning fa-l"></i> Erro de autenticação <i class="fa fa-warning fa-l"></i></b><br>Password errada!';
-                $_SESSION['auth'] = false;
-                $_SESSION['user_log'] = $username;
-                $_SESSION['pass_log'] = $dados['password'];
-                Redirect::toRoute('home/login');
+                $msg = '<b><b> Atenção! </b><br>Password inserida incorreta!';
+                View::make('home.login', ['msg' => $msg]);
             }
         } else {
-            $_SESSION['msg_auth'] = '<b><i class="fa fa-warning fa-l"></i> Erro de autenticação <i class="fa fa-warning fa-l"></i></b><br>O username não existe!';
-            $_SESSION['auth'] = false;
-            $_SESSION['user_log'] = $username;
-            $_SESSION['pass_log'] = $dados['password'];
-            Redirect::toRoute('home/login');
+            $msg = '<b> Atenção! </b><br>Username inserido incorreto!';
+            View::make('home.login', ['msg' => $msg]);
         }
     }
 }
