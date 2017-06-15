@@ -16,8 +16,8 @@ Router::get('/',			'HomeController/index');
 Router::get('home/',		'HomeController/index');
 Router::get('home/index',	'HomeController/index');
 Router::get('home/start',	'HomeController/start');
-Router::get('home/login',	'HomeController/login');
-Router::post('home/sigin','AuthController/authenticate');
+Router::get('home/login',	'AuthController/login');
+Router::post('home/signin','AuthController/authenticate');
 
 
 

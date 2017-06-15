@@ -2,7 +2,7 @@
 use ArmoredCore\WebObjects\URL;
 use ArmoredCore\WebObjects\Data;
 
-$msg = $_SESSION['msg_auth'];
+$msg = Data::get('msg');
 
 Layout::includeLayout('header') ?>
 
@@ -25,34 +25,33 @@ Layout::includeLayout('header') ?>
 				<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 					<div class="panel panel-default">
 						<div class="panel-body">
-							<h3 class="thin text-center">Sign in to your account</h3>
+							<h3 class="thin text-center">Iniciar Sessão</h3>
 							<p class="text-center text-muted">Lorem ipsum dolor sit amet, <a href="signup.html">Register</a> adipisicing elit. Quo nulla quibusdam cum doloremque incidunt nemo sunt a tenetur omnis odio. </p>
 							<hr>
-							
-							<form method="post" action="<?= URL::toRoute('home/sigin') ?>">
+
+                            <form method="post" action="<?= URL::toRoute('home/signin') ?>">
                                 <?php if ($msg != ''){ ?>
                                     <div class="top-margin bg-danger text-center error_register"><?= $msg ?></div>
                                 <?php } ?>
-								<div class="top-margin">
-									<label>Username/Email <span class="text-danger">*</span></label>
-									<input type="text" class="form-control" name="username">
-								</div>
-								<div class="top-margin">
-									<label>Password <span class="text-danger">*</span></label>
-									<input type="password" class="form-control" name="password">
-								</div>
+                                <div class="top-margin">
+                                    <label>Username <span class="text-danger">*</span></label>
+                                    <input type="text" name="username" class="form-control" required>
+                                </div>
+                                <div class="top-margin">
+                                    <label>Password <span class="text-danger">*</span></label>
+                                    <input type="password" name="password" class="form-control" required>
+                                </div>
+                                <hr>
 
-								<hr>
-
-								<div class="row">
-									<div class="col-lg-8">
-										<b><a href="">Forgot password?</a></b>
-									</div>
-									<div class="col-lg-4 text-right">
-										<button class="btn btn-action" type="submit">Sign in</button>
-									</div>
-								</div>
-							</form>
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <b><a href="">Perdestes a palavra-passe?</a></b>
+                                    </div>
+                                    <div class="col-lg-4 text-right">
+                                        <button class="btn btn-action" type="submit">Sign in</button>
+                                    </div>
+                                </div>
+                            </form>
 						</div>
 					</div>
 
