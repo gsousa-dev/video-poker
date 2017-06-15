@@ -1,16 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: smendes
- * Date: 02-05-2016
- * Time: 11:18
- */
-use ArmoredCore\Facades\Router;
 
-/****************************************************************************
- *  URLEncoder/HTTPRouter Routing Rules
- *  Use convention: controllerName@methodActionName
- ****************************************************************************/
+use ArmoredCore\Facades\Router;
 
 Router::get('/',			'HomeController/index');
 Router::get('home/',		'HomeController/index');
@@ -20,13 +10,23 @@ Router::get('home/login',	'AuthController/login');
 Router::post('home/signin','AuthController/authenticate');
 
 
+// --- User Routes --- //
+Router::get('users/index',   'UserController/index');
+Router::get('users/create',  'UserController/create');
+Router::post('users/store',  'UserController/store');
+Router::get('users/show',    'UserController/show');
+Router::get('users/edit',    'UserController/edit');
+Router::post('users/update', 'UserController/update');
+Router::post('users/delete', 'UserController/destroy');
+// Router::resource('users', 'UserController');
 
 
-
-
-
-
-
-
-
-/************** End of URLEncoder Routing Rules ************************************/
+// --- Transaction Routes --- //
+Router::get('transactions/index',   'TransactionController/index');
+Router::get('transactions/create',  'TransactionController/create');
+Router::post('transactions/store',  'TransactionController/store');
+Router::get('transactions/show',    'TransactionController/show');
+Router::get('transactions/edit',    'TransactionController/edit');
+Router::post('transactions/update', 'TransactionController/update');
+Router::post('transactions/delete', 'TransactionController/destroy');
+// Router::resource('users', 'UserController');

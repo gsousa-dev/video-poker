@@ -6,45 +6,39 @@ use ArmoredCore\WebObjects\Session;
 use ArmoredCore\WebObjects\View;
 use ArmoredCore\Interfaces\ResourceControllerInterface;
 
-class UserController extends BaseController
+class TransactionController extends BaseController
 {
     /**
-     * @return \ArmoredCore\WebObjects\View;
+     * @return mixed
      */
     public function index() 
     {
     }
 
     /**
-     * @return \ArmoredCore\WebObjects\View;
+     * @return mixed
      */
-    public function create() 
-    {
-    }
+    public function create() {}
 
     /**
      * @return mixed
      */
-    public function store() 
-    {
-    }
+    public function store() {}
 
     /**
      * @param $id
-     * @return \ArmoredCore\WebObjects\View;
+     * @return mixed
      */
     public function show($id) 
     {
-        $user = User::find($id);        
     }
 
     /**
      * @param $id
-     * @return \ArmoredCore\WebObjects\View;
+     * @return mixed
      */
     public function edit($id) 
     {
-        $user = User::find($id);        
     }
 
     /**
@@ -53,7 +47,6 @@ class UserController extends BaseController
      */
     public function update($id) 
     {
-        $user = User::find($id);        
     }
 
     /**
@@ -62,6 +55,5 @@ class UserController extends BaseController
      */
     public function destroy($id) 
     {
-        $user = User::find($id);
     }
 }
