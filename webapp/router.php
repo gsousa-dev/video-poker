@@ -30,3 +30,6 @@ Router::get('transactions/edit',    'TransactionController/edit');
 Router::post('transactions/update', 'TransactionController/update');
 Router::post('transactions/delete', 'TransactionController/destroy');
 // Router::resource('users', 'UserController');
+
+// --- Game Routes --- //
+Router::get('game/index', 'GameController/index');

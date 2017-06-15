@@ -1,0 +1,42 @@
+main {
+    border: 1px solid black;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    width: 800px;
+    /*background-color: plum;*/
+}
+
+main table {
+    border: 1px solid black;
+    width: 100%;   
+}
+
+main th, td { padding: 5px; }
+
+main td { text-align: right; }
+
+main section:first-child {
+    border-bottom: 1px solid black;
+    height: auto;
+    padding: 25px;
+}
+
+main section:nth-child(2) {
+    border-bottom: 1px solid black;
+    text-align: center;
+    height: auto;
+}
+
+main section:nth-child(2) img { padding: 5px; }
+
+main section:last-child {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+main section:last-child button {
+    padding: 10px;
+}
