@@ -19,8 +19,7 @@ $mt5 = new MT5MultiTentantForwarder();
  * ServerMod Secure Registry
  */
 
-$mt5->registerServerMod('webapp','firewire')->setDefault();
-$mt5->registerServerMod('wlstudio','firewire');
+$mt5->registerServerMod('app','firewire')->setDefault();
 
 /**
  * End of Server Mod registration

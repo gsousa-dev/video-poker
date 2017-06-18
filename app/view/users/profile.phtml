@@ -1,0 +1,12 @@
+<?php
+
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\Data;
+
+$user = Data::get('user');
+
+Layout::includeLayout('header') ?>
+
+<h1>Bem vindo, <?= $user->username ?></h1>
+
+<?php Layout::includeLayout('footer') ?>

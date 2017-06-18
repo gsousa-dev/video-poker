@@ -23,7 +23,7 @@ main section:first-child {
     padding: 25px;
 }
 
-main section:nth-child(2) {
+#cards {
     border-bottom: 1px solid black;
     text-align: center;
     height: auto;

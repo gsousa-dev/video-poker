@@ -1,0 +1,79 @@
+<?php 
+
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\URL;
+use ArmoredCore\WebObjects\Data;
+
+
+Layout::includeLayout('header') ?>
+
+<!-- container -->
+<div class="container">
+
+	<div class="row">
+
+		<!-- Article main content -->
+		<article class="col-xs-12 maincontent">
+			<header class="page-header">
+				<h1 class="page-title">Register</h1>
+			</header>
+
+			<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h3 class="thin text-center">Register</h3>
+
+						<form method="post" action="<?= URL::toRoute('users/store') ?>">
+							<div class="top-margin bg-danger text-center error_register"></div>
+							<div class="top-margin">
+								<label for="fullName">
+                                    Full Name <span class="text-danger">*</span>
+                                </label>
+								<input type="text" class="form-control" id="fullName" name="fullName" required>
+							</div>
+							<div class="top-margin">
+								<label for="birthday">
+                                    Birthday <span class="text-danger">*</span>
+                                </label>
+								<input type="date" class="form-control" id="birthday" name="birthday" required>
+							</div>
+							<div class="top-margin">
+								<label for="username">
+                                    Username <span class="text-danger">*</span>
+                                </label>
+								<input type="text" class="form-control" id="username" name="username" required>
+							</div>
+							<div class="top-margin">
+								<label for="email">
+                                    Email <span class="text-danger">*</span>
+                                </label>
+								<input type="email" class="form-control" id="email" name="email" required>
+							</div>
+							<div class="top-margin">
+								<label for="password">
+                                    Password <span class="text-danger">*</span>
+                                </label>
+								<input type="text" class="form-control" id="password" name="password" required>
+							</div>
+
+							<hr>
+
+							<div class="row">
+								<div class="col-lg-4 text-right">
+									<button class="btn btn-action" type="submit">Submit</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+			</div>
+
+		</article>
+		<!-- /Article -->
+
+	</div>
+</div>
+<!-- /container -->
+
+<?php Layout::includeLayout('footer') ?>

@@ -29,7 +29,7 @@
         <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
       </PATH_ELEMENT>
       <PATH_ELEMENT>
-        <option name="myItemId" value="webapp@localhost" />
+        <option name="myItemId" value="app@localhost" />
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
     </PATH>
@@ -39,11 +39,11 @@
         <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
       </PATH_ELEMENT>
       <PATH_ELEMENT>
-        <option name="myItemId" value="webapp@localhost" />
+        <option name="myItemId" value="app@localhost" />
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
       <PATH_ELEMENT>
-        <option name="myItemId" value="webapp" />
+        <option name="myItemId" value="app" />
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
       <PATH_ELEMENT>
@@ -57,11 +57,11 @@
         <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
       </PATH_ELEMENT>
       <PATH_ELEMENT>
-        <option name="myItemId" value="webapp@localhost" />
+        <option name="myItemId" value="app@localhost" />
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
       <PATH_ELEMENT>
-        <option name="myItemId" value="webapp" />
+        <option name="myItemId" value="app" />
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
     </PATH>
@@ -246,7 +246,6 @@
         <option value="$PROJECT_DIR$/framework/ArmoredCore/DataComposer.php" />
         <option value="$PROJECT_DIR$/vendor/php-activerecord/lib/Connection.php" />
         <option value="$PROJECT_DIR$/framework/ArmoredCore/Adapters/Database/PHPActiveRecordAdapter.php" />
-        <option value="$PROJECT_DIR$/wlstudio/model/Book.php" />
         <option value="$PROJECT_DIR$/vendor/Filisko/PDOplus/Tracy/BarPanel.php" />
         <option value="$USER_HOME$/Desktop/HTTP404.html" />
         <option value="$PROJECT_DIR$/framework/ArmoredCore/WebAsset.php" />
@@ -956,8 +955,8 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\wamp64\www\weblogicmvc\vendor\Pd\Diagnostics" />
-      <recent name="E:\wamp64\www\weblogicmvc\webapp\startup" />
-      <recent name="E:\wamp64\www\weblogicmvc\webapp\view\layout" />
+      <recent name="E:\wamp64\www\weblogicmvc\app\startup" />
+      <recent name="E:\wamp64\www\weblogicmvc\app\view\layout" />
       <recent name="E:\wamp64\www\weblogicmvc\framework\armoredcore" />
       <recent name="E:\wamp64\www\weblogicmvc\framework" />
     </key>
@@ -982,7 +981,7 @@
     </option>
   </component>
   <component name="RunManager" selected="PHPUnit.weblogicmvc">
-    <configuration default="false" name="startupconfig.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/webapp/startup/startupconfig.php">
+    <configuration default="false" name="startupconfig.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/app/startup/startupconfig.php">
       <method />
     </configuration>
     <configuration default="true" type="CodeceptionConfigurationType" factoryName="Codeception">
@@ -1266,14 +1265,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="200" column="0" lean-forward="true" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wlstudio/model/Book.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="38" lean-forward="false" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
           <folding />
         </state>
       </provider>
