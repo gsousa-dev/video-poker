@@ -1,0 +1,104 @@
+<?php
+
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\URL;
+use ArmoredCore\WebObjects\Asset;
+
+$user = Data::get('user');
+
+Layout::includeLayout('header') ?>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+        
+                <!-- Introduction to the game -->
+                <article>
+                    <h1 class="page-header">Learn Video Poker Rules and Video Poker Hand Values</h1>
+                
+                    <p>Video Poker online may seem just a combination of slot machine and a poker game. It is played on a where each hand requires a new bet and that has a variable payout depending on the size of that bet, just like a slot machine. It is called Video Poker because usually one player plays against a machine which displays the player's cards on a screen. Video Poker combines skill with luck, providing an exciting combination of challenge and surprise.</p>
+
+                    <p>Since the game is played on a machine, according to video poker rules your only objective is to get the best-paying hand. The game starts with a player placing a bet and then he is dealt five cards from a standard 52-card pack. In Video Poker rules only the ranking of the hands is the same as in table poker. You may hold or throw away as many cards as you like by activating the button “HOLD” underneath every card. After selecting the card(s) you want to HOLD or discard, press on "DEAL/DRAW". The cards you didn’t want to hold are replaced with new cards.</p>
+
+                    <p>When you are dealt replacement cards for your discards, your new hand is evaluated. Based on what kind of hand you're holding, you'll receive a certain number of points.</p>
+
+                    <p>Below you'll find poker hand values from the highest scoring hand (Royal Flush) to the lowest hand (Pair) and a description of each.</p>
+                </article>
+
+                <!-- How to Play -->
+                <article>
+                    <h1 class="page-header">How to play</h1>
+                    
+                    <ol>
+                        <li>Deposit coins into the machine to place your bet. The bet cannot be changed once the play starts.</li>
+                        <li>After you place your bet you must press the "Draw/Deal" button on the Video Poker machine. This will result in 5 cards being drawn, this is your initial poker hand. As with all casino games of poker, the objective is to hold the most winning hand.</li>
+                        <li>The next step is hold the cards you'd like to keep. To do this you should just push the "Hold/Cancel" button under the card(s) or press directly on the card(s) you want to keep.</li>
+                        <li>Push the "Draw/Deal" button a second time to obtain new cards for those not held (in some games the cards will be drawn automatically).</li>
+                        <li>If you have a winning hand, the machine pays off and is then ready for another game.</li>
+                    </ol>
+                </article>
+
+                <!-- Poker Hands -->
+                <section>
+                    <h1 class="page-header">Hand Values</h1>
+                    <p>
+                        <h3><b>Royal Flush</b></h3>
+                        <img src="<?= Asset::image('cards/hands/Royal_Flush.png') ?>">
+                        <br><br>The best possible hand, a Ten, Jack, Queen, King and Ace of the same suit.
+                    </p>
+
+                    <p>
+                        <h3><b>Straight Flush</b></h3>
+                        <img src="<?= Asset::image('cards/hands/Straight_Flush.png') ?>">
+                        <br><br>All five cards are consecutive and are of the same suit.               
+                    </p>
+                    
+                    <p>
+                        <h3><b>Poker</b></h3>
+                        <img src="<?= Asset::image('cards/hands/Poker.png') ?>">
+                        <br><br>Four cards of the same value and obviously of different suits.                
+                    </p>
+
+                    <p>
+                        <h3><b>Full House</b></h3>
+                        <img src="<?= Asset::image('cards/hands/Full_House.png') ?>">
+                        <br><br>A three of a kind and a pair at the same time.
+                    </p>
+
+                    <p>
+                        <h3><b>Flush</b></h3>
+                        <img src="<?= Asset::image('cards/hands/Flush.png') ?>">
+                        <br><br>Any five cards of the same suit, but not in sequence.
+                    </p>
+
+                    <p>
+                        <h3><b>Straight</b></h3>
+                        <img src="<?= Asset::image('cards/hands/Straight.png') ?>">
+                        <br><br>Five cards in sequence, but not in the same suit.
+                    </p>
+
+                    <p>
+                        <h3><b>Three Of A Kind</b></h3>
+                        <img src="<?= Asset::image('cards/hands/Three_of_a_Kind.png') ?>">
+                        <br><br>Three cards of the same value.
+                    </p>
+
+                    <p>
+                        <h3><b>Two Pair</b></h3>
+                        <img src="<?= Asset::image('cards/hands/Two_Pair.png') ?>">
+                        <br><br>Two pairs of cards.
+                    </p>
+
+                    <p>
+                        <h3><b>Pair</b></h3>
+                        <img src="<?= Asset::image('cards/hands/Pair.png') ?>">
+                        <br><br>Two cards in your hand are of the same value.
+                    </p>
+                </section>                
+
+            </div>
+        </div>
+    </div>
+
+<?php Layout::includeLayout('footer') ?>

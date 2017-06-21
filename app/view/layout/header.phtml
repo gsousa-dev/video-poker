@@ -2,6 +2,8 @@
 use ArmoredCore\WebObjects\Asset;
 use ArmoredCore\Facades\AssetBundler;
 use ArmoredCore\WebObjects\URL;
+use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\Session;
 ?>
 
 <!DOCTYPE html>
@@ -41,21 +43,27 @@ use ArmoredCore\WebObjects\URL;
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?= URL::toRoute('home/index')?>">
-                    <img src="<?= Asset::image('logo.png')?>" alt="WEBlogic MVC">
-                </a>
+                <img src="<?= Asset::image('logo.png')?>" class="navbar-brand">
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav pull-right">
-                    <li class="active"><a href="<?= URL::toRoute('home/index')?>">Home</a></li>
-                    <li><a href="<?= URL::toRoute('home/start')?>">Start</a></li>
-                    <?php 
-                        if (isset($_SESSION['authenticated'])) {
-                            echo '<li><a href="/video-poker/app/auth/logout" class="btn">Log Out</a></li>';
-                        } else {
-                            echo '<li><a href="/video-poker/app/auth/login" class="btn">Log In</a></li>';
-                        }
-                    ?>
+                    <?php if (isset($_SESSION['user'])) { $user = $_SESSION['user']; ?>
+                        <!-- User is logged in -->
+                        <li class="active"><a href="/video-poker/app/game/play">Play</a></li>
+                        <li class="active"><a href="/video-poker/app/game/rules">Game Rules</a></li>
+                        <li class="dropdown active">
+                            <a href='#' class='dropdown-toggle' data-toggle='dropdown'><?= $user->fullname . ' (' . $user->username . ')' ?><b class='caret'></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/video-poker/app/user/dashboard">Dashboard</a></li>
+                                <li><a href="/video-poker/app/">Account Movements</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/video-poker/app/auth/logout" class="btn">Log Out</a></li>
+                    <?php } else { ?>
+                        <!-- User is a guest -->
+                        <li class="active"><a href="/video-poker/app/game/rules">Game Rules</a></li>
+                        <li><a href="/video-poker/app/auth/login" class="btn">Log In</a></li>
+                    <?php } ?>
                 </ul>
             </div>
             <!--/.nav-collapse -->

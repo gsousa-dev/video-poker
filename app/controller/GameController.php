@@ -33,4 +33,12 @@ class GameController
         print_r($cards);
         // echo json_encode($cards);
     }
+
+    /**
+     * @return \ArmoredCore\WebObjects\View
+     */
+    public function rules()
+    {
+        return View::make('game.rules');
+    }
 }

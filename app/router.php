@@ -42,3 +42,4 @@ Router::post('transactions/delete', 'TransactionController/destroy');
 // --- Game Routes --- //
 Router::get('game/index', 'GameController/index');
 Router::get('game/card-deck', 'GameController/getCardDeck');
+Router::get('game/rules',     'GameController/rules');
