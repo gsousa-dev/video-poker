@@ -1,0 +1,116 @@
+<?php
+
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\URL;
+use ArmoredCore\WebObjects\Asset;
+
+// $user = Data::get('user');
+
+Layout::includeLayout('header') ?>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <main>
+                    <section id="store">
+                        <header>
+                            <h3>Buy Credits</h3>
+                        </header>
+
+                        <div class="row-container">
+                            <div class="float-left">                     
+                                <img src="<?= Asset::image('coin.png') ?>">
+                                <span class="credits">1000</span> credits
+                            </div>
+                            <div class="float-right">
+                                <button class="buy-btn" credits="1000">BUY</button>
+                                <span class="text-bold">for</span>                  
+                                <span class="currency">€250</span>
+                            </div>
+                        </div>
+
+                        <div class="row-container">
+                            <div class="float-left">
+                                <img src="<?= Asset::image('coin.png') ?>">
+                                <span class="credits">400</span> credits
+                            </div>
+                            <div class="float-right">                            
+                                <button class="buy-btn" credits="400">BUY</button>
+                                <span class="text-bold">for</span>                                
+                                <span class="currency">€100</span>
+                            </div>
+                        </div>
+
+                        <div class="row-container">
+                            <div class="float-left">
+                                <img src="<?= Asset::image('coin.png') ?>">
+                                <span class="credits">200</span> credits
+                            </div>
+                            <div class="float-right">                            
+                                <button class="buy-btn" credits="200">BUY</button>
+                                <span class="text-bold">for</span>                                
+                                <span class="currency">€50</span>
+                            </div>
+                        </div>
+
+                        <div class="row-container">
+                            <div class="float-left">
+                                <img src="<?= Asset::image('coin.png') ?>">
+                                <span class="credits">100</span> credits
+                            </div>
+                            <div class="float-right">                            
+                                <button class="buy-btn" credits="100">BUY</button>
+                                <span class="text-bold">for</span>                                
+                                <span class="currency">€25</span>
+                            </div>
+                        </div>
+
+                        <div class="row-container">
+                            <div class="float-left">
+                                <img src="<?= Asset::image('coin.png') ?>">
+                                <span class="credits">40</span> credits
+                            </div>
+                            <div class="float-right">                            
+                                <button class="buy-btn" credits="40">BUY</button>
+                                <span class="text-bold">for</span>                                
+                                <span class="currency">€10</span>
+                            </div>
+                        </div>
+
+                        <div class="row-container">
+                            <div class="float-left">
+                                <img src="<?= Asset::image('coin.png') ?>">
+                                <span class="credits">20</span> credits
+                            </div>
+                            <div class="float-right">                            
+                                <button class="buy-btn" credits="20">BUY</button>
+                                <span class="text-bold">for</span>                                
+                                <span class="currency">€5</span>
+                            </div>
+                        </div>
+
+                        <div class="row-container">
+                            <div class="float-left">
+                                <img src="<?= Asset::image('coin.png') ?>">
+                                <span class="credits">4</span> credits
+                            </div>
+                            <div class="float-right">                            
+                                <button class="buy-btn" credits="4">BUY</button>
+                                <span class="text-bold">for</span>
+                                <span class="currency">€1</span>
+                            </div>
+                        </div>
+
+                        <footer>
+                            <a href="<?= URL::toRoute('user/dashboard') ?>"><button id="cancel-btn">Go to dashboard</button></a>
+                        </footer>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <script src="<?= Asset::js('store.js')?>"></script>
+
+<?php Layout::includeLayout('footer') ?>

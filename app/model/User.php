@@ -1,8 +1,18 @@
 <?php
+
 use ActiveRecord\Model;
 
 class User extends Model
 {
+    /**
+     * Account Movements
+     *
+     * @return \App\Model\Movements []
+     */
+    static $has_many = [
+        ['movements', 'foreign_key' => 'userId']
+    ];
+ 
     /**
      * @return \App\Model\User
      */

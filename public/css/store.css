@@ -1,0 +1,83 @@
+#store { 
+    font-family: "Open sans", Helvetica, Arial;    
+    height: auto;
+    min-width: 422px;
+}
+
+#store header { 
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+#store header h3 { 
+    text-align: center;
+    padding: 3px;
+}
+
+#store button { padding: 10px 17px 10px 17px; }
+
+#store .row-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    border-bottom: 1px solid #eee;
+}
+
+#store .float-left {
+    min-width: 190px;
+    width: 20%;
+    margin-left: 20px;
+}
+
+#store .row-container .float-left img {
+    width: 60px;
+    height: 60px;
+    margin: 5px 2px 5px 2px;
+}
+
+#store .float-right {
+    min-width: 188px;
+    width: 20%;
+    padding-left: 20px;
+    margin-right: 20px
+}
+
+.row-container:nth-child(2) {
+    border-top: 1.5px solid #eee;
+}
+
+.credits {
+    font-weight: 100 bold;
+    font-size: 30px;
+}
+
+.text-bold {
+    margin-left: 5px;
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.currency {
+    color: slategrey;
+    font-weight: 500;
+    font-size: x-large;
+}
+
+#store .buy-btn {
+    color: whitesmoke;
+    border-radius: 5px;
+    background-color: mediumpurple;
+    outline:0;
+    border: none;
+    font-weight: bold;
+}
+
+#store footer { text-align: center; }
+
+#store footer #cancel-btn {
+    background-color: transparent;
+    border: 1.5px solid grey;
+    border-radius: 5px;
+    margin-top: 30px;
+}

@@ -3,32 +3,30 @@
 use ArmoredCore\Facades\Router;
 
 Router::get('/',			'HomeController/index');
-Router::get('home/',		'HomeController/index');
-Router::get('home/index',	'HomeController/index');
-Router::get('home/start',	'HomeController/start');
-Router::get('home/login',	'AuthController/login');
-Router::post('home/signin','AuthController/authenticate');
-
 
 
 // --- Auth Routes --- //
 Router::get('auth/login',         'AuthController/login');
 Router::post('auth/authenticate', 'AuthController/authenticate');
-Router::get('auth/logout',       'AuthController/logout');
+Router::get('auth/logout',        'AuthController/logout');
 
 
 // --- User Routes --- //
-Router::get('users/index',   'UserController/index');
-Router::get('users/create',  'UserController/create');
-Router::post('users/store',  'UserController/store');
-Router::get('users/show',    'UserController/show');
-Router::get('users/edit',    'UserController/edit');
-Router::post('users/update', 'UserController/update');
-Router::post('users/delete', 'UserController/destroy');
-// Router::resource('users', 'UserController');
-
+Router::get('users/index',    'UserController/index');
+Router::get('user/dashboard', 'UsersController/dashboard');
+Router::get('user/register',  'UsersController/create');
+Router::post('users/store',   'UsersController/store');
+Router::get('users/show',     'UsersController/show');
+Router::get('users/edit',     'UsersController/edit');
+Router::post('users/update',  'UsersController/update');
+Router::post('users/delete',  'UsersController/destroy');
 
 // --- Transaction Routes --- //
+Router::get('account/movements', 'MovementsController/getAccountMovements');
+Router::get('store/credits',     'MovementsController/store');
+Router::post('store/buy-credits',      'MovementsController/buyCredits');
+
+
 Router::get('transactions/index',   'TransactionController/index');
 Router::get('transactions/create',  'TransactionController/create');
 Router::post('transactions/store',  'TransactionController/store');
@@ -36,10 +34,15 @@ Router::get('transactions/show',    'TransactionController/show');
 Router::get('transactions/edit',    'TransactionController/edit');
 Router::post('transactions/update', 'TransactionController/update');
 Router::post('transactions/delete', 'TransactionController/destroy');
-// Router::resource('users', 'UserController');
-
 
 // --- Game Routes --- //
-Router::get('game/index', 'GameController/index');
+Router::get('game/play',     'GameController/play');
 Router::get('game/card-deck', 'GameController/getCardDeck');
 Router::get('game/rules',     'GameController/rules');
+
+
+Router::get('store/',             'StoreController/index');
+Router::post('store/buy-credits', 'StoreController/buyCredits');
+
+Router::post('store/test', 'StoreController/test');
+

@@ -21,9 +21,11 @@ use ArmoredCore\WebObjects\Session;
     <link rel="shortcut icon" href="<?= Asset::image('gt_favicon.png')?>">
     <link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
     <!-- Custom styles for our site template -->
-    <link rel="stylesheet" href="<?= Asset::css('/bootstrap.min.css')?>" media="screen">
-    <link rel="stylesheet" href="<?= Asset::css('/bootstrap-theme.css')?>" media="screen">
-    <link rel="stylesheet" href="<?= Asset::css('/game.css')?>" media="screen">
+    <link rel="stylesheet" href="<?= Asset::css('/bootstrap.min.css') ?>" media="screen">
+    <link rel="stylesheet" href="<?= Asset::css('/bootstrap-theme.css') ?>" media="screen">
+    <link rel="stylesheet" href="<?= Asset::css('/game.css') ?>" media="screen">
+    <link rel="stylesheet" href="<?= Asset::css('/account-movements.css') ?>" media="screen">
+    <link rel="stylesheet" href="<?= Asset::css('/store.css') ?>" media="screen">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -47,15 +49,16 @@ use ArmoredCore\WebObjects\Session;
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav pull-right">
-                    <?php if (isset($_SESSION['user'])) { $user = $_SESSION['user']; ?>
+                    <?php if (isset($_SESSION['user'])) { $user = User::find($_SESSION['user']->id); ?>
                         <!-- User is logged in -->
                         <li class="active"><a href="/video-poker/app/game/play">Play</a></li>
                         <li class="active"><a href="/video-poker/app/game/rules">Game Rules</a></li>
                         <li class="dropdown active">
-                            <a href='#' class='dropdown-toggle' data-toggle='dropdown'><?= $user->fullname . ' (' . $user->username . ')' ?><b class='caret'></b></a>
+                            <a href='#' class='dropdown-toggle' data-toggle='dropdown'><?= $user->fullname . ' (' . $user->balance . ' credits)' ?><b class='caret'></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="/video-poker/app/user/dashboard">Dashboard</a></li>
-                                <li><a href="/video-poker/app/">Account Movements</a></li>
+                                <li><a href="/video-poker/app/account/movements">Account Movements</a></li>
+                                <li><a href="/video-poker/app/store">Buy Credits</a></li>
                             </ul>
                         </li>
                         <li><a href="/video-poker/app/auth/logout" class="btn">Log Out</a></li>
