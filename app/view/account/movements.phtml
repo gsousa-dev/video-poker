@@ -1,0 +1,76 @@
+<?php
+
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\URL;
+
+$movements = Data::get('accountMovements');
+$page = Data::get('page');
+$pages = Data::get('pages');
+$index = Data::get('index');
+
+Layout::includeLayout('header') ?>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <main id="account-movements">
+                <header class="page-header">
+                    <h1 class="page-title">Account Movements</h1>
+                </header>
+                <section>
+                    <div class="panel panel-default panel-table">
+                        <div class="panel-body">
+                            <table class="table table-striped table-bordered table-list">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Date / Time</th>
+                                        <th>Type</th>
+                                        <th>Description</th>
+                                        <th>Credit</th>
+                                        <th>Debit</th>
+                                        <th>Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php 
+                                    $i = $index; 
+                                    foreach($movements as $movement) {  ?>
+                                    <tr>
+                                        <td><?= $i ?></td>
+                                        <td><?= $movement->created_at->format('M d, Y - H:m') ?></td>
+                                        <td><?= $movement->type ?></td>
+                                        <td><?= $movement->description ?></td>
+                                        <td><?= $movement->credit ?></td>
+                                        <td><?= $movement->debit ?></td>
+                                        <td><?= $movement->balance ?></td>
+                                    </tr>
+                                    <?php $i++; } ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                <footer id="test">
+                    <div class="align-left"><?= 'Page ' . $page . ' of ' . $pages ?></div>
+                    <div class="align-right">
+                        <ul class="pagination hidden-xs pull-right">
+                            <?php for ($i = 1; $i <= $pages; $i++) { ?>
+                            <li>
+                                <a href="<?= Url::toRoute('account/movements', $i) ?>"><?= $i ?></a>
+                            </li>
+                            <?php } ?>
+                        </ul>
+                        <ul class="pagination visible-xs pull-right">
+                            <li><a href="#">«</a></li>
+                            <li><a href="#">»</a></li>
+                        </ul>
+                    </div>
+                </footer>
+            </main>
+        </div>
+    </div>
+</div>
+
+<?php Layout::includeLayout('footer') ?>
