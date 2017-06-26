@@ -19,7 +19,7 @@ class UsersController extends BaseController
             // User is logged in
 
             // Get authenticated user
-            $user = Session::get('user');
+            $user = User::find(Session::get('user')->id);
 
             if ($user->isadmin) { // User has admin privileges
 
@@ -67,10 +67,8 @@ class UsersController extends BaseController
      */
     public function register() 
     {
-        $_SESSION['fullNameError'] = null;
-        $_SESSION['usernameError'] = null;
-        $_SESSION['emailError'] = null;
-        $_SESSION['passwordError'] = null;
+        Session::destroy();
+
         return View::make('user.form');
     }
 
@@ -80,15 +78,75 @@ class UsersController extends BaseController
     public function store() 
     {
         $data = Post::getAll();
-        $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
 
-        $user = User::create($data);
+        $user = new User();
 
-        if ($user) {
-            return View::make('auth.login');            
+        // Name
+        if (isset($data['fullName'])) {
+            if (strlen($data['fullName']) > 60) {
+                $_SESSION['fullNameError'] = 'Name content must be less than 60 characters';
+                $_SESSION['fullName'] = $data['fullName'];
+            } else {
+                $user->fullname = $data['fullName'];
+                $_SESSION['fullName'] = $data['fullName'];                
+            }
         }
 
-        return;
+        // Birthday
+        if (isset($data['birthday'])) {
+            $d1 = date_create($data['birthday']);
+            $d2 = date_create(date('Y-m-d'));
+            $diff = date_diff($d1, $d2);
+
+            if ($diff->y < 18) {
+                $_SESSION['birthdayError'] = 'You need to be 18 or older to create an account.';
+            } else {
+                $user->birthday = $data['birthday'];
+            }
+        }
+
+        // Username
+        if (isset($data['username'])) {
+            $username_exists = User::find_by_username($data['username']);
+
+            if ($username_exists) {
+                $_SESSION['usernameError'] = 'This username is already in use.';
+                $_SESSION['username'] = $data['username'];
+                
+            } else {
+                $user->username = $data['username'];
+                $_SESSION['username'] = $data['username'];            
+            }
+        }
+        
+        // Email
+        if (isset($data['email'])) {
+            $email_exists = User::find_by_email($data['email']);
+
+            if ($email_exists) {
+                $_SESSION['emailError'] = 'This email address is already in use.';
+                $_SESSION['email'] = $data['email'];             
+            } else {
+                $user->email = $data['email'];
+                $_SESSION['email'] = $data['email'];                             
+            }
+        }
+
+        // Password
+        if (isset($data['password'])) {
+            if (strlen($data['password']) < 6) {
+                $_SESSION['passwordError'] = 'Password must be at least 6 characters';
+            } else {
+                $user->password = password_hash($data['password'], PASSWORD_BCRYPT);
+            }
+        }
+        
+        if (! ($user->fullname && $user->birthday && $user->username && $user->email && $user->password)) {
+            return View::make('user.form');
+        } else {
+            $user->save();
+            return Redirect::toRoute('auth/login');            
+        }
     }
 
     /**
@@ -98,7 +156,9 @@ class UsersController extends BaseController
     public function profile() 
     {
         $_SESSION['fullNameError'] = null;
+        $_SESSION['fullName'] = null;
         $_SESSION['emailError'] = null;
+        $_SESSION['email'] = null;
         $_SESSION['passwordError'] = null;
 
         if (isset($_SESSION['user'])) {
@@ -118,15 +178,16 @@ class UsersController extends BaseController
     {
         if (isset($_SESSION['user'])) {
             // Get authenticated user
-            $user = Session::get('user');
+            $user = User::find(Session::get('user')->id);
 
             // Post data
-            $data = Post::getAll();        
-
+            $data = Post::getAll();
+            
             // Name
             if (isset($data['fullName'])) { 
                 if (strlen($data['fullName']) > 60) {
                     $_SESSION['fullNameError'] = 'Name content must be less than 60 characters';
+                    $_SESSION['fullName'] = $data['fullName'];
                 } else {
                     $user->fullname = $data['fullName'];
                 }
@@ -137,22 +198,25 @@ class UsersController extends BaseController
                 $email_exists = User::find_by_email($data['email']);
 
                 if ($email_exists && $user->email != $email_exists->email) {
-                    $_SESSION['emailError'] = 'This email address is already in use.';
+                    $_SESSION['emailError'] = 'The email address you were trying to use already exists.';
+                    $_SESSION['email'] = $data['email'];
                 } else {
                     $user->email = $data['email']; 
                 }
             }
 
-            // Password    
+            // Password
             if (isset($data['password'])) {
-                if (strlen($data['password']) < 8 && strlen($data['password']) != 0) {
-                    $_SESSION['passwordError'] = 'Password must be at least 8 characters';
-                } else {
-                    $user->password = password_hash($data['password'], PASSWORD_BCRYPT);
+                if (strlen($data['password']) > 0) {
+                    if (strlen($data['password']) >= 6) {
+                        $user->password = password_hash($data['password'], PASSWORD_BCRYPT);;
+                    } else {
+                        $_SESSION['passwordError'] = 'Password must be at least 6 characters';
+                    }
                 }
-            }
+            }  
             
-            // $user->save();
+            $user->save();
 
             return View::make('user.form', ['user' => $user]);
         }

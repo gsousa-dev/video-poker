@@ -41,7 +41,7 @@ class AuthController extends BaseController
                     // User logged in successfully
                     Session::set('user', $user);
 
-                    return Redirect::toRoute('user/profile');
+                    return Redirect::toRoute('game/');
                 }
             }
 

@@ -16,7 +16,7 @@ class GameController
     public function index() 
     {
         if (isset($_SESSION['user'])) {
-            $user = Session::get('user');
+            $user = User::find(Session::get('user')->id);
 
             if ($user->balance > 0) {
                 // User has enough credits to enter the game

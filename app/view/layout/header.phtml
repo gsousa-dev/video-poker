@@ -53,8 +53,7 @@ use ArmoredCore\WebObjects\Session;
                 <ul class="nav navbar-nav pull-right">
                     <?php if (isset($_SESSION['user'])) { $user = User::find($_SESSION['user']->id); ?>
                         <!-- User is logged in -->
-                        <li class="active"><a href="#" id="play-btn">Play</a></li>
-                        <!--<li class="active"><a href="/video-poker/app/game/play" id="play-btn">Play</a></li>-->
+                        <li class="active"><a href="<?= URL::toRoute('game/') ?>" id="play-btn">Play</a></li>
                         <li class="active"><a href="<?= URL::toRoute('game/rules') ?>">Game Rules</a></li>
                         <li class="dropdown active">
                             <a href='#' class='dropdown-toggle' data-toggle='dropdown'>
@@ -97,7 +96,7 @@ use ArmoredCore\WebObjects\Session;
                 window.location.href = '/video-poker/app/store';               
             }
         }
-
+        
         if (! window.location.href.includes('/video-poker/app/store')) {
             playButton.addEventListener('click', goToGame);
         }

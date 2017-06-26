@@ -18,7 +18,7 @@ class BackOfficeController extends BaseController
             // User is logged in
 
             // Get authenticated user
-            $user = Session::get('user');
+            $user = User::find(Session::get('user')->id);
 
             if ($user->isadmin) { // User has admin privileges
 

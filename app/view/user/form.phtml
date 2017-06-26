@@ -37,13 +37,16 @@ Layout::includeLayout('header') ?>
 						<?php } else { ?>
 						<form method="post" action="<?= URL::toRoute('user/store') ?>">
 						<?php } ?>
-							<div class="top-margin bg-danger text-center error_register"></div>
+
+							<!-- Name field -->
 							<div class="top-margin">
 								<label for="fullName">
                                     Full Name <span class="text-danger">*</span>
                                 </label>
 								<?php if ($user->id) { ?>
-								<input type="text" class="form-control" id="fullName" name="fullName" value="<?= $user->fullname ?>">
+								<input type="text" class="form-control" id="fullName" name="fullName" value="<?= $user->fullname ?>" required>
+								<?php } elseif (isset($_SESSION['fullName'])) { ?>
+								<input type="text" class="form-control" id="fullName" name="fullName" value="<?= $_SESSION['fullName'] ?>" required>
 								<?php } else { ?>
 								<input type="text" class="form-control" id="fullName" name="fullName" required>
 								<?php } ?>
@@ -55,6 +58,7 @@ Layout::includeLayout('header') ?>
 							</div>
 							<?php } ?>
 
+							<!-- Birthday field -->
 							<?php if (! $user->id) { ?>
 							<div class="top-margin">
 								<label for="birthday">
@@ -62,40 +66,55 @@ Layout::includeLayout('header') ?>
                                 </label>
 								<input type="date" class="form-control" id="birthday" name="birthday" required>
 							</div>
-							<!-- Error Message -->							
+							<?php } ?>
+							<!-- Error Message -->
+							<?php if (isset($_SESSION['birthdayError'])) { ?>
 							<div class="error-message">
+								<?= $_SESSION['birthdayError'] ?>
 							</div>
 							<?php } ?>
 
+							<!-- Username field -->							
 							<?php if (! $user->id) { ?>
 							<div class="top-margin">
 								<label for="username">
                                     Username <span class="text-danger">*</span>
                                 </label>
+								<?php if (isset($_SESSION['username'])) { ?>
+								<input type="text" class="form-control" id="username" name="username" value="<?= $_SESSION['username'] ?>" required>
+								<?php } else { ?>
 								<input type="text" class="form-control" id="username" name="username" required>
+								<?php } ?>
 							</div>
-							<!-- Error Message -->							
+							<?php } ?>							
+							<!-- Error Message -->
+							<?php if (isset($_SESSION['usernameError'])) { ?>						
 							<div class="error-message">
+								<?= $_SESSION['usernameError'] ?>
 							</div>
 							<?php } ?>
 							
+							<!-- Email field -->
 							<div class="top-margin">
 								<label for="email">
                                     Email <span class="text-danger">*</span>
                                 </label>
 								<?php if ($user->id) { ?>
-								<input type="email" class="form-control" id="email" name="email" value="<?= $user->email ?>">
+								<input type="email" class="form-control" id="email" name="email" value="<?= $user->email ?>" required>
+								<?php } elseif (isset($_SESSION['email'])) { ?>
+								<input type="email" class="form-control" id="email" name="email" value="<?= $_SESSION['email'] ?>" required>								
 								<?php } else { ?>
 								<input type="email" class="form-control" id="email" name="email" required>
 								<?php } ?>
 							</div>
-							<!-- Error Message -->							
+							<!-- Email Error Message -->							
 							<?php if (isset($_SESSION['emailError'])) { ?>
 							<div class="error-message">
 								<?= $_SESSION['emailError'] ?>
 							</div>
 							<?php } ?>
 							
+							<!-- Password field -->
 							<div class="top-margin">
 								<label for="password">
                                     Password <span class="text-danger">*</span>
@@ -143,4 +162,3 @@ Layout::includeLayout('header') ?>
 <!-- /container -->
 
 <?php Layout::includeLayout('footer') ?>
-*/
