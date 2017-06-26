@@ -2,10 +2,9 @@
 
 use ArmoredCore\Facades\Router;
 
-Router::get('/',			'HomeController/index');
-
 
 // --- Auth Routes --- //
+Router::get('/',			      'AuthController/login');
 Router::get('auth/login',         'AuthController/login');
 Router::post('auth/authenticate', 'AuthController/authenticate');
 Router::get('auth/logout',        'AuthController/logout');

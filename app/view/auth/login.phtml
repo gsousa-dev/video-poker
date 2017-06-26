@@ -4,6 +4,8 @@ use ArmoredCore\WebObjects\Layout;
 use ArmoredCore\WebObjects\URL;
 use ArmoredCore\WebObjects\Data;
 
+$loginFailed   = Data::get('loginFailed');
+$userIsBlocked = Data::get('userIsBlocked');
 
 Layout::includeLayout('header') ?>
 
@@ -22,8 +24,21 @@ Layout::includeLayout('header') ?>
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<h3 class="thin text-center">Log in to your account</h3>
+						
 						<hr>
 
+						<?php if ($loginFailed == 'true') { ?>
+							<div class="top-margin bg-danger text-center error_register" style="padding: 15px;">
+								<i class="fa fa-warning fa-l"></i><b> Error </b><i class="fa fa-warning fa-l"></i>
+								<br>The username or password is incorrect.
+							</div>
+						<?php } elseif ($userIsBlocked == 'true') { ?>
+							<div class="top-margin bg-danger text-center error_register" style="padding: 15px;">
+								<i class="fa fa-warning fa-l"></i><b> Error </b><i class="fa fa-warning fa-l"></i>
+								<br>The account you're trying to access has been banned or suspended.
+							</div>
+						<?php } ?>
+						
 						<form method="post" action="<?= URL::toRoute('auth/authenticate') ?>">
 							<div class="top-margin bg-danger text-center error_register">
 							</div>
@@ -31,7 +46,7 @@ Layout::includeLayout('header') ?>
 								<label for="username">
 									Username <span class="text-danger">*</span>
 								</label>
-								<input type="text" class="form-control" id="username" name="username" value="med" required>
+								<input type="text" class="form-control" id="username" name="username" value="admin" required>
 							</div>
 							<div class="top-margin">
 								<label for="password">
@@ -43,12 +58,10 @@ Layout::includeLayout('header') ?>
 							<hr>
 
 							<div class="row">
-								<div class="col-lg-8">
-									<b><a href="">Forgot password?</a></b>
-								</div>
-								<div class="col-lg-4 text-right">
+								<div class="col-lg-4">
 									<button class="btn btn-action" type="submit">Log in</button>
 								</div>
+								<a href=""><button class="btn btn-secondary" type="">Register</button></a>
 							</div>
 						</form>
 					</div>
