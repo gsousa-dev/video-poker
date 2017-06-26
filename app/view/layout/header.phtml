@@ -55,6 +55,7 @@ use ArmoredCore\WebObjects\Session;
                         <!-- User is logged in -->
                         <li class="active"><a href="<?= URL::toRoute('game/') ?>" id="play-btn">Play</a></li>
                         <li class="active"><a href="<?= URL::toRoute('game/rules') ?>">Game Rules</a></li>
+                        <li class="active"><a href="<?= URL::toRoute('game/ranking') ?>">Top Players</a></li>
                         <li class="dropdown active">
                             <a href='#' class='dropdown-toggle' data-toggle='dropdown'>
                                 <span><?= $user->fullname . ' (' ?></span>
@@ -71,8 +72,9 @@ use ArmoredCore\WebObjects\Session;
                         <li><a href="/video-poker/app/auth/logout" class="btn">Log Out</a></li>
                     <?php } else { ?>
                         <!-- User is a guest -->
-                        <li class="active"><a href="/video-poker/app/game/rules">Game Rules</a></li>
-                        <li><a href="/video-poker/app/auth/login" class="btn">Log In</a></li>
+                        <li class="active"><a href="<?= URL::toRoute('game/rules') ?>">Game Rules</a></li>
+                        <li class="active"><a href="<?= URL::toRoute('game/ranking') ?>">Top Players</a></li>
+                        <li><a href="<?= URL::toRoute('auth/login') ?>" class="btn">Log In</a></li>
                     <?php } ?>
                 </ul>
             </div>
