@@ -9,39 +9,29 @@ Router::get('auth/login',         'AuthController/login');
 Router::post('auth/authenticate', 'AuthController/authenticate');
 Router::get('auth/logout',        'AuthController/logout');
 
+// --- Back Office Routes --- //
+Router::get('back-office/user-list',          'BackOfficeController/getUserList');
+Router::get('back-office/toggle-user-status', 'BackOfficeController/toggleUserStatus');
+
 
 // --- User Routes --- //
-Router::get('users/index',    'UserController/index');
-Router::get('user/dashboard', 'UsersController/dashboard');
-Router::get('user/register',  'UsersController/create');
-Router::post('users/store',   'UsersController/store');
-Router::get('users/show',     'UsersController/show');
-Router::get('users/edit',     'UsersController/edit');
-Router::post('users/update',  'UsersController/update');
-Router::post('users/delete',  'UsersController/destroy');
-
-// --- Transaction Routes --- //
-Router::get('account/movements', 'MovementsController/getAccountMovements');
-Router::get('store/credits',     'MovementsController/store');
-Router::post('store/buy-credits',      'MovementsController/buyCredits');
+Router::get('user/register', 'UsersController/register');
+Router::post('user/store',  'UsersController/store');
+Router::get('user/profile',  'UsersController/profile');
+Router::post('user/update', 'UsersController/update');
 
 
-Router::get('transactions/index',   'TransactionController/index');
-Router::get('transactions/create',  'TransactionController/create');
-Router::post('transactions/store',  'TransactionController/store');
-Router::get('transactions/show',    'TransactionController/show');
-Router::get('transactions/edit',    'TransactionController/edit');
-Router::post('transactions/update', 'TransactionController/update');
-Router::post('transactions/delete', 'TransactionController/destroy');
+// --- Movements Routes --- //
+Router::get('account/movements',   'UsersController/getAccountMovements');
+
 
 // --- Game Routes --- //
-Router::get('game/play',     'GameController/play');
+Router::get('game/',          'GameController/index');
 Router::get('game/card-deck', 'GameController/getCardDeck');
 Router::get('game/rules',     'GameController/rules');
+Router::get('game/ranking',   'GameController/ranking');
 
 
+// --- Store Routes --- //
 Router::get('store/',             'StoreController/index');
 Router::post('store/buy-credits', 'StoreController/buyCredits');
-
-Router::post('store/test', 'StoreController/test');
-

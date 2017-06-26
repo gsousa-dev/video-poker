@@ -57,12 +57,14 @@ Layout::includeLayout('header') ?>
 
 							<hr>
 
-							<div class="row">
-								<div class="col-lg-4">
-									<button class="btn btn-action" type="submit">Log in</button>
+							<footer style="display: flex; justify-content: space-between;">
+								<div><button class="btn btn-action" type="submit">Log in</button></div>
+								<div>
+									<a href="<?= URL::toRoute('user/register') ?>">
+										<button class="btn btn-secondary" type="button">Register</button>
+									</a>
 								</div>
-								<a href=""><button class="btn btn-secondary" type="">Register</button></a>
-							</div>
+							</footer>
 						</form>
 					</div>
 				</div>

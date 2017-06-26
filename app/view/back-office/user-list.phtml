@@ -1,0 +1,80 @@
+<?php
+
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\URL;
+
+$users = Data::get('users');
+$page  = Data::get('page');
+$pages = Data::get('pages');
+$index = Data::get('index');
+
+Layout::includeLayout('header') ?>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <header class="page-header">
+                    <h1 class="page-title">Back Office</h1>
+                </header>
+
+                <section>
+                    <div class="panel panel-default panel-table">
+                        <div class="panel-body">
+                            <table class="table table-bordered table-list">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Username</th>
+                                        <th>Email</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach($users as $user) {
+                                if ($user->isblocked) { ?>
+                                    <tr class="danger">
+                                <?php } else { ?>
+                                    <tr class="active">                                    
+                                <?php } ?>
+                                        <td><?= $user->fullname ?></td>    
+                                        <td><?= $user->username ?></td>    
+                                        <td><?= $user->email ?></td>
+                                <?php if ($user->isblocked) { ?>
+                                        <td><a href="<?= URL::toRoute('back-office/toggle-user-status', $user->id) ?>">Unblock</a></td>
+                                <?php } else { ?>
+                                        <td><a href="<?= URL::toRoute('back-office/toggle-user-status', $user->id) ?>">Block</a></td>
+                                <?php } ?>                                    
+                                    </tr>
+                                <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <footer class="table-bottom">
+                    <div class="align-left">
+                        <?= 'Page ' . $page . ' of ' . $pages ?>
+                    </div>
+                    <div class="align-right">
+                        <ul class="pagination hidden-xs pull-right">
+                            <?php for ($i = 1; $i <= $pages; $i++) { ?>
+                            <li>
+                                <a href="<?= Url::toRoute('account/movements', $i) ?>"><?= $i ?></a>
+                            </li>
+                            <?php } ?>
+                        </ul>
+                        <ul class="pagination visible-xs pull-right">
+                            <li><a href="#">«</a></li>
+                            <li><a href="#">»</a></li>
+                        </ul>
+                    </div>
+                </footer>
+
+            </div>
+        </div>
+    </div>
+
+<?php Layout::includeLayout('footer') ?>

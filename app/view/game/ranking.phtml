@@ -1,0 +1,64 @@
+<?php
+
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\URL;
+
+$players = Data::get('players');
+
+Layout::includeLayout('header') ?>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <header class="page-header">
+                    <h1 class="page-title">Top 10 Players</h1>
+                </header>
+
+                <section>
+                    <div class="panel panel-default panel-table">
+                        <div class="panel-body">
+                            <table class="table table-bordered table-list">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Username</th>
+                                        <th>Winnings</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php 
+                                $i = 1; 
+                                foreach($players as $player) {
+                                    switch( $i ) {
+                                        case 1:
+                                            $color = 'gold';
+                                            break;
+                                        case 2:
+                                            $color = 'silver';
+                                            break;
+                                        case 3:
+                                            $color = '#cd7f32';
+                                            break;
+                                        default:
+                                            $color = '';
+                                    }
+                                ?>
+                                    <tr style="background-color: <?= $color ?>">
+                                        <td><?= $i ?></td> 
+                                        <td><?= $player->username ?></td> 
+                                        <td><?= $player->winnings ?></td>
+                                    <tr>
+                                <?php $i++; } ?> 
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+<?php Layout::includeLayout('footer') ?>

@@ -15,7 +15,7 @@ class AuthController extends BaseController
     public function login() 
     {
         if (isset($_SESSION['user'])) {
-            return Redirect::toRoute('user/dashboard');
+            return Redirect::toRoute('user/profile');
         }
 
         return View::make('auth.login');
@@ -41,7 +41,7 @@ class AuthController extends BaseController
                     // User logged in successfully
                     Session::set('user', $user);
 
-                    return Redirect::toRoute('user/dashboard');
+                    return Redirect::toRoute('user/profile');
                 }
             }
 

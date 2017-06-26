@@ -15,7 +15,19 @@ class GameController
      */
     public function index() 
     {
-        return View::make('game.index');
+        if (isset($_SESSION['user'])) {
+            $user = Session::get('user');
+
+            if ($user->balance > 0) {
+                // User has enough credits to enter the game
+                return View::make('game.index');
+            }
+
+            // User doesn't have enough credits to even enter the game so we send him to the store
+            return Redirect::toRoute('store/');
+        }
+
+        return Redirect::toRoute('auth/login');
     }
 
     /**
@@ -40,5 +52,20 @@ class GameController
     public function rules()
     {
         return View::make('game.rules');
+    }
+
+    /**
+     * @return \ArmoredCore\WebObjects\View
+     */
+    public function ranking()
+    {
+        $players = User::find('all', [
+            'limit' => 10,
+            'order' => 'winnings desc'
+        ]);
+
+        return View::make('game.ranking', [
+            'players' => $players
+        ]);
     }
 }

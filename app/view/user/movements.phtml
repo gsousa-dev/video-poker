@@ -5,9 +5,9 @@ use ArmoredCore\WebObjects\Data;
 use ArmoredCore\WebObjects\URL;
 
 $movements = Data::get('accountMovements');
-$page = Data::get('page');
-$pages = Data::get('pages');
-$index = Data::get('index');
+$page      = Data::get('page');
+$pages     = Data::get('pages');
+$index     = Data::get('index');
 
 Layout::includeLayout('header') ?>
 
@@ -52,8 +52,10 @@ Layout::includeLayout('header') ?>
                         </div>
                     </div>
                 </section>
-                <footer id="test">
-                    <div class="align-left"><?= 'Page ' . $page . ' of ' . $pages ?></div>
+                <footer class="table-bottom">
+                    <div class="align-left">
+                        <?= 'Page ' . $page . ' of ' . $pages ?>
+                    </div>
                     <div class="align-right">
                         <ul class="pagination hidden-xs pull-right">
                             <?php for ($i = 1; $i <= $pages; $i++) { ?>

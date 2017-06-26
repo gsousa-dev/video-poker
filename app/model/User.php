@@ -32,4 +32,10 @@ class User extends Model
 
         return false;
     }
+
+    public function toggleStatus()
+    {
+        $this->isblocked = !$this->isblocked;
+        $this->save();
+    }
 }

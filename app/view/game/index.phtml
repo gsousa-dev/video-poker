@@ -8,116 +8,122 @@ $deck = Data::get('deck');
 
 Layout::includeLayout('header'); ?>
 
-<main>
-    <!-- Points System -->
-    <section>
-        <table>
-            <!-- Royal Flush -->
-            <tr>
-                <th>Royal Flush</th>
-                <td>250</td>
-                <td>500</td>
-                <td>750</td>
-                <td>1000</td>
-                <td>4000</td>
-            </tr>
-            <!-- Straight Flush -->
-            <tr>
-                <th>Straight Flush</th>
-                <td>50</td>
-                <td>100</td>
-                <td>150</td>
-                <td>200</td>
-                <td>250</td>
-            </tr>
-            <!-- 4 Of A Kind -->
-            <tr>
-                <th>4 Of A Kind</th>
-                <td>30</td>
-                <td>60</td>
-                <td>90</td>
-                <td>120</td>
-                <td>150</td>
-            </tr>
-            <!-- Full House -->
-            <tr>
-                <th>Full House</th>
-                <td>6</td>
-                <td>12</td>
-                <td>18</td>
-                <td>24</td>
-                <td>30</td>
-            </tr>
-            <!-- Flush -->
-            <tr>
-                <th>Flush</th>
-                <td>5</td>
-                <td>10</td>
-                <td>15</td>
-                <td>20</td>
-                <td>25</td>
-            </tr>
-            <!-- Straight -->
-            <tr>
-                <th>Straight</th>
-                <td>4</td>
-                <td>8</td>
-                <td>12</td>
-                <td>16</td>
-                <td>20</td>
-            </tr>
-            <!-- 3 Of A Kind -->
-            <tr>
-                <th>3 Of A Kind</th>
-                <td>3</td>
-                <td>6</td>
-                <td>9</td>
-                <td>12</td>
-                <td>15</td>
-            </tr>
-            <!-- Two Pair -->
-            <tr>
-                <th>Two Pair</th>
-                <td>2</td>
-                <td>4</td>
-                <td>6</td>
-                <td>8</td>
-                <td>10</td>
-            </tr>
-            <!-- Jacks Of Better -->
-            <tr>
-                <th>Jacks Of Better</th>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-                <td>5</td>
-            </tr>
-        </table>
-    </section>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <main id="game">
+                <!-- Points System -->
+                <section>
+                    <table>
+                        <!-- Royal Flush -->
+                        <tr>
+                            <th>Royal Flush</th>
+                            <td>250</td>
+                            <td>500</td>
+                            <td>750</td>
+                            <td>1000</td>
+                            <td>4000</td>
+                        </tr>
+                        <!-- Straight Flush -->
+                        <tr>
+                            <th>Straight Flush</th>
+                            <td>50</td>
+                            <td>100</td>
+                            <td>150</td>
+                            <td>200</td>
+                            <td>250</td>
+                        </tr>
+                        <!-- 4 Of A Kind -->
+                        <tr>
+                            <th>4 Of A Kind</th>
+                            <td>30</td>
+                            <td>60</td>
+                            <td>90</td>
+                            <td>120</td>
+                            <td>150</td>
+                        </tr>
+                        <!-- Full House -->
+                        <tr>
+                            <th>Full House</th>
+                            <td>6</td>
+                            <td>12</td>
+                            <td>18</td>
+                            <td>24</td>
+                            <td>30</td>
+                        </tr>
+                        <!-- Flush -->
+                        <tr>
+                            <th>Flush</th>
+                            <td>5</td>
+                            <td>10</td>
+                            <td>15</td>
+                            <td>20</td>
+                            <td>25</td>
+                        </tr>
+                        <!-- Straight -->
+                        <tr>
+                            <th>Straight</th>
+                            <td>4</td>
+                            <td>8</td>
+                            <td>12</td>
+                            <td>16</td>
+                            <td>20</td>
+                        </tr>
+                        <!-- 3 Of A Kind -->
+                        <tr>
+                            <th>3 Of A Kind</th>
+                            <td>3</td>
+                            <td>6</td>
+                            <td>9</td>
+                            <td>12</td>
+                            <td>15</td>
+                        </tr>
+                        <!-- Two Pair -->
+                        <tr>
+                            <th>Two Pair</th>
+                            <td>2</td>
+                            <td>4</td>
+                            <td>6</td>
+                            <td>8</td>
+                            <td>10</td>
+                        </tr>
+                        <!-- Jacks Of Better -->
+                        <tr>
+                            <th>Jacks Of Better</th>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                        </tr>
+                    </table>
+                </section>
 
-    <!-- Cards -->
-    <section id="cards">
-        <img src="<?= Asset::image('cards/back/cardBack_red5.png')?>">
-        <img src="<?= Asset::image('cards/back/cardBack_red5.png')?>">
-        <img src="<?= Asset::image('cards/back/cardBack_red5.png')?>">
-        <img src="<?= Asset::image('cards/back/cardBack_red5.png')?>">
-        <img src="<?= Asset::image('cards/back/cardBack_red5.png')?>">
-    </section>
+                <!-- Cards -->
+                <section id="cards">
+                    <img src="<?= Asset::image('cards/back/cardBack_red5.png')?>">
+                    <img src="<?= Asset::image('cards/back/cardBack_red5.png')?>">
+                    <img src="<?= Asset::image('cards/back/cardBack_red5.png')?>">
+                    <img src="<?= Asset::image('cards/back/cardBack_red5.png')?>">
+                    <img src="<?= Asset::image('cards/back/cardBack_red5.png')?>">
+                </section>
 
-    <!-- Game Actions -->
-    <section>
-        <button>Help</button>
-        <button>Menu</button>
-        <button>Share</button>
+                <!-- Game Actions -->
+                <section>
+                    <button>Help</button>
+                    <button>Menu</button>
+                    <button>Share</button>
 
-        <button>$1</button>
+                    <button>$1</button>
 
-        <button>Bet</button>
-        <button>Bet 5</button>
-        <button onclick="dealCards()">Deal</button>
-    </section>
-</main>
+                    <button>Bet</button>
+                    <button>Bet 5</button>
+                    <button onclick="dealCards()">Deal</button>
+                </section>
+            </main>
+        </div>
+    </div>
+</div>
 
 <script src="<?= Asset::js('game.js')?>"></script>
 
