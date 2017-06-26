@@ -1,42 +1,38 @@
-main {
+#game {
     border: 1px solid black;
     margin-top: 30px;
-    margin-left: auto;
-    margin-right: auto;
     height: auto;
-    width: 800px;
-    /*background-color: plum;*/
 }
 
-main table {
+#game table {
     border: 1px solid black;
-    width: 100%;   
+    width: 100%;
 }
 
-main th, td { padding: 5px; }
+#game th, td { padding: 5px; }
 
-main td { text-align: right; }
+#game td { text-align: right; }
 
-main section:first-child {
+#game section:first-child {
     border-bottom: 1px solid black;
     height: auto;
     padding: 25px;
 }
 
-#cards {
+#game #cards {
     border-bottom: 1px solid black;
     text-align: center;
     height: auto;
 }
 
-main section:nth-child(2) img { padding: 5px; }
+#game section:nth-child(2) img { padding: 5px; }
 
-main section:last-child {
+#game section:last-child {
     text-align: center;
     padding-top: 20px;
     padding-bottom: 20px;
 }
 
-main section:last-child button {
+#game section:last-child button {
     padding: 10px;
 }

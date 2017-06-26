@@ -80,3 +80,11 @@ img.pull-left { margin-right: 10px; }
 
 	.widget-simplenav { margin-left:-5px; }		
 	.widget-simplenav a{ margin:0 5px; }		
+
+.error-message {
+	background-color: #FF9494;
+    height: 20px;
+    border-radius: 5px;
+    margin-top: 1px;
+	padding-left: 10px;
+}

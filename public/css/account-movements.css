@@ -1,6 +1,6 @@
 main#account-movements { height: auto; }
 
-main#account-movements footer {
+footer.table-bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
