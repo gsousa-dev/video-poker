@@ -112,10 +112,16 @@ class GameController
         if (isset($_SESSION['hand'])) {
             $hand = $_SESSION['hand'];
 
-            foreach ($hand as $card) {
-                
+            for ($card = 0; $card < 5; $card++) { 
+                $hand[$card] = substr($hand[$card], strpos($hand[$card], '\\front\\card'));
+                $hand[$card] = substr($hand[$card], 7);
+                $hand[$card] = substr($hand[$card], 0, -4);
             }
 
+
+            // $this->hasPrize($hand);
+
+            // return;
             return View::make('game.index');
         }
 
@@ -161,6 +167,16 @@ class GameController
         }
  
         return $deck;
+    }
+
+    private function hasPrize($hand)
+    {
+        $cardNumbers = [];
+
+        foreach ($hand as $card) {
+            $cardNumbers[] = substr($card, -1);
+        }
+
     }
 
     private function has_dupes($array) 
