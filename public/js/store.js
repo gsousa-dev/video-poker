@@ -6,7 +6,7 @@ function buyCredits() {
     if (userConfirmed) {
         let formData = new FormData();
 
-        formData.append('description', 'blank');
+        formData.append('description', 'deposit');
         formData.append('credits', this.attributes['credits'].value);
 
         let request = new XMLHttpRequest();

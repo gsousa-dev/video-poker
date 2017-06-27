@@ -3,8 +3,17 @@
 use ArmoredCore\WebObjects\Layout;
 use ArmoredCore\WebObjects\Asset;
 use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\URL;
+use ArmoredCore\WebObjects\Session;
 
-$deck = Data::get('deck');
+$user  = Data::get('user');
+
+if (isset($_SESSION['bet'])) {
+    $bet = $_SESSION['bet'];
+}
+if (isset($_SESSION['hand'])) {
+    $hand = $_SESSION['hand'];
+}
 
 Layout::includeLayout('header'); ?>
 
@@ -14,112 +23,184 @@ Layout::includeLayout('header'); ?>
             <main id="game">
                 <!-- Points System -->
                 <section>
-                    <table>
-                        <!-- Royal Flush -->
-                        <tr>
-                            <th>Royal Flush</th>
-                            <td>250</td>
-                            <td>500</td>
-                            <td>750</td>
-                            <td>1000</td>
-                            <td>4000</td>
-                        </tr>
-                        <!-- Straight Flush -->
-                        <tr>
-                            <th>Straight Flush</th>
-                            <td>50</td>
-                            <td>100</td>
-                            <td>150</td>
-                            <td>200</td>
-                            <td>250</td>
-                        </tr>
-                        <!-- 4 Of A Kind -->
-                        <tr>
-                            <th>4 Of A Kind</th>
-                            <td>30</td>
-                            <td>60</td>
-                            <td>90</td>
-                            <td>120</td>
-                            <td>150</td>
-                        </tr>
-                        <!-- Full House -->
-                        <tr>
-                            <th>Full House</th>
-                            <td>6</td>
-                            <td>12</td>
-                            <td>18</td>
-                            <td>24</td>
-                            <td>30</td>
-                        </tr>
-                        <!-- Flush -->
-                        <tr>
-                            <th>Flush</th>
-                            <td>5</td>
-                            <td>10</td>
-                            <td>15</td>
-                            <td>20</td>
-                            <td>25</td>
-                        </tr>
-                        <!-- Straight -->
-                        <tr>
-                            <th>Straight</th>
-                            <td>4</td>
-                            <td>8</td>
-                            <td>12</td>
-                            <td>16</td>
-                            <td>20</td>
-                        </tr>
-                        <!-- 3 Of A Kind -->
-                        <tr>
-                            <th>3 Of A Kind</th>
-                            <td>3</td>
-                            <td>6</td>
-                            <td>9</td>
-                            <td>12</td>
-                            <td>15</td>
-                        </tr>
-                        <!-- Two Pair -->
-                        <tr>
-                            <th>Two Pair</th>
-                            <td>2</td>
-                            <td>4</td>
-                            <td>6</td>
-                            <td>8</td>
-                            <td>10</td>
-                        </tr>
-                        <!-- Jacks Of Better -->
-                        <tr>
-                            <th>Jacks Of Better</th>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                        </tr>
+                    <table class="table table-bordered">
+                        <thead>
+                            <th>Hands</th>
+                            <?php 
+                            for ($i = 1; $i < 6; $i++) { 
+                                if (isset($bet) && ($i == $bet)) { ?>
+                                    <th class="bet">Bet x<?= $i ?></th>
+                                <?php } else { ?>
+                                    <th>Bet x<?= $i ?></th>
+                                <?php } ?>
+                            <?php } ?>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Royal Flush</td>
+                                <?php 
+                                $x = 0; 
+                                for ($i = 1; $i < 6; $i++) {
+                                    if ($i == 5) {
+                                        $x+= 3000;
+                                    } else {
+                                        $x+= 250;
+                                    }
+                                    if (isset($bet) && ($i == $bet)) {
+                                ?>
+                                    <td class="bet"><?= $x ?></td>
+                                    <?php } else { ?>
+                                    <td><?= $x ?></td>
+                                    <?php } ?>
+                                <?php } ?>
+                            </tr>
+                            <tr>
+                                <td>Straight Flush</td>
+                                <?php 
+                                $x = 0; 
+                                for ($i = 1; $i < 6; $i++) { 
+                                    $x+=50; 
+                                    if (isset($bet) && ($i == $bet)) { ?>
+                                        <td class="bet"><?= $x ?></td>
+                                    <?php } else { ?>                                
+                                <td><?= $x ?></td>
+                                    <?php } ?>
+                                <?php } ?>
+                            </tr>
+                            <tr>
+                                <td>4 Of A Kind</td>
+                                <?php 
+                                $x = 0; 
+                                for ($i = 1; $i < 6; $i++) { 
+                                    $x+=30; 
+                                    if (isset($bet) && ($i == $bet)) { ?>
+                                        <td class="bet"><?= $x ?></td>
+                                    <?php } else { ?>                                
+                                <td><?= $x ?></td>
+                                    <?php } ?>
+                                <?php } ?>
+                            </tr>
+                            <tr>
+                                <td>Full House</th>
+                                <?php 
+                                $x = 0; 
+                                for ($i = 1; $i < 6; $i++) { 
+                                    $x+=6; 
+                                    if (isset($bet) && ($i == $bet)) { ?>
+                                        <td class="bet"><?= $x ?></td>
+                                    <?php } else { ?>                                
+                                <td><?= $x ?></td>
+                                    <?php } ?>
+                                <?php } ?>
+                            </tr>
+                            <tr>
+                                <td>Flush</th>
+                                <?php 
+                                $x = 0; 
+                                for ($i = 1; $i < 6; $i++) { 
+                                    $x+=5; 
+                                    if (isset($bet) && ($i == $bet)) { ?>
+                                        <td class="bet"><?= $x ?></td>
+                                    <?php } else { ?>                                
+                                <td><?= $x ?></td>
+                                    <?php } ?>
+                                <?php } ?>
+                            </tr>
+                            <tr>
+                                <td>Straight</th>
+                                <?php 
+                                $x = 0; 
+                                for ($i = 1; $i < 6; $i++) { 
+                                    $x+=4; 
+                                    if (isset($bet) && ($i == $bet)) { ?>
+                                        <td class="bet"><?= $x ?></td>
+                                    <?php } else { ?>                                
+                                <td><?= $x ?></td>
+                                    <?php } ?>
+                                <?php } ?>
+                            </tr>
+                            <tr>
+                                <td>3 Of A Kind</th>
+                                <?php 
+                                $x = 0; 
+                                for ($i = 1; $i < 6; $i++) { 
+                                    $x+=3; 
+                                    if (isset($bet) && ($i == $bet)) { ?>
+                                        <td class="bet"><?= $x ?></td>
+                                    <?php } else { ?>                                
+                                <td><?= $x ?></td>
+                                    <?php } ?>
+                                <?php } ?>
+                            </tr>
+                            <tr>
+                                <td>Two Pair</th>
+                                <?php 
+                                $x = 0; 
+                                for ($i = 1; $i < 6; $i++) { 
+                                    $x+=2; 
+                                    if (isset($bet) && ($i == $bet)) { ?>
+                                        <td class="bet"><?= $x ?></td>
+                                    <?php } else { ?>                                
+                                <td><?= $x ?></td>
+                                    <?php } ?>
+                                <?php } ?>
+                            </tr>
+                            <tr>
+                                <td>Jacks Of Better</th>
+                                <?php 
+                                for ($i = 1; $i < 6; $i++) { 
+                                    if (isset($bet) && ($i == $bet)) { ?>
+                                        <td class="bet"><?= $i ?></td>
+                                    <?php } else { ?>                                
+                                <td><?= $i ?></td>
+                                    <?php } ?>
+                                <?php } ?>
+                            </tr>
+                        </tbody>
                     </table>
                 </section>
 
                 <!-- Cards -->
                 <section id="cards">
-                    <img src="<?= Asset::image('cards/back/cardBack_red5.png')?>">
-                    <img src="<?= Asset::image('cards/back/cardBack_red5.png')?>">
-                    <img src="<?= Asset::image('cards/back/cardBack_red5.png')?>">
-                    <img src="<?= Asset::image('cards/back/cardBack_red5.png')?>">
-                    <img src="<?= Asset::image('cards/back/cardBack_red5.png')?>">
+                    <?php if (strpos($_SERVER['REQUEST_URI'], '/hand')) { ?>
+                    <h3> Select the cards you want to fold</h3>
+                    <br>
+                    <?php } ?>
+                    <?php 
+                    if (isset($hand) && count($hand) == 5) {
+                        for ($card = 0; $card < 5; $card++) {
+                    ?>
+                    <img id="<?= $card ?>" src="<?= $hand[$card] ?>">
+                        <?php } ?>
+                    <?php } else { ?>
+                    <img id="1" src="<?= Asset::image('cards/back/cardBack_red5.png')?>">
+                    <img id="2" src="<?= Asset::image('cards/back/cardBack_red5.png')?>">
+                    <img id="3" src="<?= Asset::image('cards/back/cardBack_red5.png')?>">
+                    <img id="4" src="<?= Asset::image('cards/back/cardBack_red5.png')?>">
+                    <img id="5" src="<?= Asset::image('cards/back/cardBack_red5.png')?>">
+                    <?php } ?>
                 </section>
 
                 <!-- Game Actions -->
-                <section>
-                    <button>Help</button>
-                    <button>Menu</button>
-                    <button>Share</button>
-
-                    <button>$1</button>
-
-                    <button>Bet</button>
-                    <button>Bet 5</button>
-                    <button onclick="dealCards()">Deal</button>
-                </section>
+                <footer>
+                    <?php 
+                    for ($i = 1; $i < 6; $i++) {                         
+                        if ($user->balance >= $i) { ?>
+                        <button class="bet-btn">Bet x<?= $i ?></button>
+                        <?php } ?>
+                    <?php } ?>
+                    <?php if (strpos($_SERVER['REQUEST_URI'], '/hand')) { ?>
+                    <a href="#">
+                        <button class="deal-btn" onclick="drawCards()">Draw cards</button>
+                    </a>
+                    <?php } elseif (strpos($_SERVER['REQUEST_URI'], '/prize')) { ?>
+                    <a href="<?= URL::toRoute('game/') ?>">
+                        <button class="deal-btn">Play again</button>
+                    </a>                                        
+                    <?php } else { ?>
+                    <button class="deal-btn" onclick="dealCards()">Deal cards</button>                    
+                    <?php } ?>
+                </footer>
             </main>
         </div>
     </div>
@@ -128,3 +209,4 @@ Layout::includeLayout('header'); ?>
 <script src="<?= Asset::js('game.js')?>"></script>
 
 <?php Layout::includeLayout('footer'); ?>
+*/

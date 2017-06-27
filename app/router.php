@@ -27,7 +27,10 @@ Router::get('account/movements',   'UsersController/getAccountMovements');
 
 // --- Game Routes --- //
 Router::get('game/',          'GameController/index');
-Router::get('game/card-deck', 'GameController/getCardDeck');
+Router::get('game/deal',      'GameController/deal');
+Router::get('game/hand',      'GameController/hand');
+Router::get('game/draw',      'GameController/draw');
+Router::get('game/prize',     'GameController/prize');
 Router::get('game/rules',     'GameController/rules');
 Router::get('game/ranking',   'GameController/ranking');
 

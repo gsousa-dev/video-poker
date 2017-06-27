@@ -1,38 +1,52 @@
 #game {
-    border: 1px solid black;
     margin-top: 30px;
     height: auto;
 }
 
-#game table {
-    border: 1px solid black;
-    width: 100%;
-}
-
-#game th, td { padding: 5px; }
-
-#game td { text-align: right; }
-
 #game section:first-child {
-    border-bottom: 1px solid black;
     height: auto;
-    padding: 25px;
+    padding: 15px;
 }
 
 #game #cards {
-    border-bottom: 1px solid black;
     text-align: center;
     height: auto;
+    padding-bottom: 40px;
 }
 
-#game section:nth-child(2) img { padding: 5px; }
+#game #cards img { 
+    cursor: pointer;
+    margin-right: 10px;
+}
 
-#game section:last-child {
+#game footer {
     text-align: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-#game section:last-child button {
-    padding: 10px;
+#game footer button.bet-btn {
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.deal-btn {
+    padding: 15px;
+    background-color: goldenrod;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.bet { background-color: #FFBBBB; }
+
+.pressed {
+    border: 3px solid red;
+}
+
+.selected-card {
+    border: 3px solid red;
+    border-radius: 5px;
 }
